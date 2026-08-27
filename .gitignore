@@ -15,3 +15,21 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Exe/ Builds
+*.apk
+*.aab
+*.exe
+*.zip
+*.tar.gz
+*.html
+*.pck
+
+# Editor config
+.vscode/
+.vs/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
