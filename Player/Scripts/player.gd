@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 var cardinal_directions : Vector2 = Vector2.DOWN
+const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var direction : Vector2 = Vector2.ZERO
 #var move_speed: float = 100.0
 #var state : String = "idle"
@@ -8,6 +9,8 @@ var direction : Vector2 = Vector2.ZERO
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
+
+signal DirectionChanged( new_direction: Vector2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,19 +38,22 @@ func _physics_process (delta):
 	
 
 func SetDirection() -> bool:
-	var new_direction : Vector2 = cardinal_directions
-	
 	if direction == Vector2.ZERO:
 		return false
 	
-	if direction.y == 0:
-		new_direction = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
-	elif direction.x == 0:
-		new_direction = Vector2.UP if direction.y < 0 else Vector2.DOWN
+	var direction_id : int = int( round( ( direction + cardinal_directions * 0.1 ).angle() / TAU * DIR_4.size() ) )
+	var new_direction = DIR_4[ direction_id ]
+	
+	# Previous direction soluction
+	#if direction.y == 0:
+		#new_direction = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
+	#elif direction.x == 0:
+		#new_direction = Vector2.UP if direction.y < 0 else Vector2.DOWN
 		
 	if new_direction == cardinal_directions:
 		return false
 	cardinal_directions = new_direction
+	DirectionChanged.emit( new_direction )
 	sprite.scale.x = -1 if cardinal_directions == Vector2.LEFT else 1
 	return true
 	
