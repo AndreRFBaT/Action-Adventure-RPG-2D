@@ -24,6 +24,7 @@ mono_crash.*.json
 *.tar.gz
 *.html
 *.pck
+*.uid
 
 # Editor config
 .vscode/
