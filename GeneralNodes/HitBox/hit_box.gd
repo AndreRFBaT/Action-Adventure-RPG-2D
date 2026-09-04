@@ -12,6 +12,10 @@ func _process(delta: float) -> void:
 	pass
 	
 
-func TakeDamege (damage : int) -> void:
-	print ("TakeDamage: ", damage)
+func TakeDamege(damage : int) -> void:
+	print("=== [HITBOX RECEIVED GAMAGE] ===")
+	print("HitBox: ", get_parent().name)
+	print("Damage Value: ", damage)
+	print("Node path: ", get_path())
+	print("=============================")
 	Damage.emit(damage)
