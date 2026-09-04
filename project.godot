@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 LevelManager="*uid://cf32wtqroourq"
+PlayerManager="*uid://bt0md5g7tw7te"
 
 [display]
 
@@ -66,6 +67,7 @@ attack={
 2d_physics/layer_2="PlayerHurt"
 2d_physics/layer_5="Walls"
 2d_physics/layer_9="Enemy"
+2d_physics/layer_10="EnemyHurt"
 
 [physics]
 
@@ -77,3 +79,4 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
