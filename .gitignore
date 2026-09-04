@@ -8,6 +8,18 @@ export.cfg
 export_credentials.cfg
 *.tmp
 
+# Private keys (Android/iOS keystores)
+*.keystore
+*.jks
+*.p12
+*.pem
+*.mobileprovision
+
+# User config
+*.pck.import
+*.translation.import
+*.godot
+
 # Imported translations (automatically generated from CSV files)
 *.translation
 
@@ -16,7 +28,7 @@ export_credentials.cfg
 data_*/
 mono_crash.*.json
 
-# Exe/ Builds
+# Exe/ Builds e and artifacts
 *.apk
 *.aab
 *.exe
@@ -25,12 +37,23 @@ mono_crash.*.json
 *.html
 *.pck
 *.uid
+build/
+bin/
 
 # Editor config
 .vscode/
 .vs/
 .idea/
+*.suo
+*.user
+*.userosv
+*.sln.docstates
 
-# OS
+# OS / temp files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
